@@ -6,15 +6,14 @@ import { CartService } from '../cart.service';
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.css']
+  styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent implements OnInit {
-
   product: Product | undefined;
   constructor(
     private route: ActivatedRoute,
     private cartService: CartService
-    ) { }
+  ) {}
 
   ngOnInit(): void {
     //First get the product id from the current route.
@@ -22,13 +21,11 @@ export class ProductDetailsComponent implements OnInit {
     const productIdFromRoute = Number(routeParams.get('productId'));
 
     //Find the product that correspond with the id provided in route
-    this.product = products.find(product => product.id == productIdFromRoute);
+    this.product = products.find((product) => product.id == productIdFromRoute);
   }
 
-  addToCart(product: Product){
+  addToCart(product: Product) {
     this.cartService.addToCart(product);
-    window.alert('Your produt hsd been added to the cart!');
+    window.alert('Your produt has been added to the cart!');
   }
-  
-
 }
